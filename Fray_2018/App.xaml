@@ -1,0 +1,12 @@
+﻿<Application x:Class="Fray_2018.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Fray_2018"
+             StartupUri="Window1.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <vm:FrayViewModelLocator xmlns:vm="clr-namespace:Fray_2018.ViewModels" x:Key="FrayLocator" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+

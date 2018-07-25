@@ -1,0 +1,75 @@
+﻿<Window x:Class="Fray_2018.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fray_2018"
+        mc:Ignorable="d"
+        Title="Window1" Height="286" Width="580" WindowStyle="None" Loaded="Window_Loaded" Initialized="Window_Initialized"
+        ResizeMode="NoResize"
+        xmlns:viewmodels="clr-namespace:Fray_2018.ViewModels"
+        xmlns:views="clr-namespace:Fray_2018.Views"
+        >
+    
+    <Window.Resources>
+        <DataTemplate x:Name="IntroViewTemplate" DataType="{x:Type viewmodels:IntroModel}">
+            <views:Intro DataContext="{Binding}" />
+        </DataTemplate>
+        <DataTemplate x:Name="SaveLocationTemplate" DataType="{x:Type viewmodels:SaveLocationModel}">
+            <views:SaveLocation DataContext="{Binding}" />
+        </DataTemplate>
+        <DataTemplate x:Name="FrayTemplate" DataType="{x:Type viewmodels:FrayViewModel}">
+            <views:Fray DataContext="{Binding}" />
+        </DataTemplate>
+    </Window.Resources>
+    
+    <StackPanel HorizontalAlignment="Stretch"  VerticalAlignment="Top">
+        <DockPanel VerticalAlignment="Top" HorizontalAlignment="Stretch"  Height="26" Background="#323232" >
+            <Grid Height="26" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="55*"/>
+                    <ColumnDefinition Width="12*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Height="26" HorizontalAlignment="Left" VerticalAlignment="Center" Source="images/img_titlebar.png"/>
+                <Rectangle Grid.Column="1" MouseDown="Rectangle_MouseDown" MouseUp="Rectangle_MouseUp" MouseMove="Rectangle_MouseMove" ></Rectangle>
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Stretch="None" MouseLeftButtonDown="Image_MouseLeftButtonDown">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="images/btn_minimize.png"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="images/btn_minimize_hover.png"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                    
+                    <Image Grid.Column="1" Stretch="None" MouseLeftButtonDown="Image_MouseLeftButtonDown_1">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="images/btn_close.png"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="images/btn_close_hover.png"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+
+                </Grid>
+            </Grid>
+
+        </DockPanel>
+        <DockPanel HorizontalAlignment="Stretch" LastChildFill="False" VerticalAlignment="Stretch" >
+            <ContentControl Content="{Binding}"/>
+        </DockPanel>
+    </StackPanel>
+</Window>
